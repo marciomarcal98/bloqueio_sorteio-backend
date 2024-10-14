@@ -12,7 +12,10 @@ app.get('/alunos', async (request, response) => {
     const { turma } = request.query
 
     try {
-      const alunos = await Aluno.findAll({ where: { turma } });
+      const alunos = await Aluno.findAll({ 
+        where: { turma },
+        order: [['nome', 'ASC']]
+      });
       response.json(alunos);
     } catch (err) {
       console.error('Erro ao buscar alunos:', err);
@@ -66,35 +69,3 @@ conn
     });
   })
   .catch((err) => console.log(err));
-
-
-// app.get('/', async (request, response) => {
-//     const query = `SELECT * FROM Alunos`
-
-//     conn.query(query, (err, data) => {
-//         if (err) {
-//             return console.log(err)
-//         }
-
-//         response.json(data)
-//     })
-// })
-
-// const conn = mysql.createConnection({
-//     host: 'sql10.freesqldatabase.com',
-//     user: 'sql10737210',
-//     password: 'Ehbz4EHUt9',
-//     database: 'sql10737210',
-//   })
-  
-//   conn.connect(function (err) {
-//     if (err) {
-//       console.log(err)
-//     }
-  
-//     console.log('Conectado ao MySQL!')
-  
-//     app.listen(3000, () => {
-//         console.log("Servidor rodando na porta 3000!")
-//     })
-//   })
