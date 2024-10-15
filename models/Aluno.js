@@ -14,6 +14,10 @@ const Aluno = db.define('Alunos', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  qtdBloqueios: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  }
 }, {
   freezeTableName: true, // Usar o nome da tabela conforme definido, sem pluralizar
   timestamps: false, // Evitar colunas createdAt e updatedAt
